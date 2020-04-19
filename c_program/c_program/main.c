@@ -1,23 +1,22 @@
 #include <stdio.h>
 
+#define LOWER 0 /* lower limit of table */
+#define UPPER 300 /* upper limit */
+#define STEP 20 /* step size */
+
 /* print Celsius-Farenheit table for 
 celsius = 0, 20, ..., 300; floating-point version */
 void CelsiusFahrenheit() {
 	float fahr, celsius;
-	float lower, upper, step;
-
-	lower = 0; /* lower limit of temperatuire scale */
-	upper = 300; /* upper limit */
-	step = 20; /* step size */
-	celsius = lower;
+	celsius = LOWER;
 
 	printf("===Celsius-Farenheit table===\n");
 	printf("Celsius Farenheit\n");
-	while (celsius <= upper) {
+	while (celsius <= UPPER) {
 		fahr = (9.0 / 5.0) * celsius + 32.0;
 
 		printf("%7.0f %9.1f\n", celsius, fahr);
-		celsius += step;
+		celsius += STEP;
 	}
 }
 
@@ -25,19 +24,14 @@ void CelsiusFahrenheit() {
 for fahr = 0, 20, ..., 300; floating-point version */
 void FahrenheitCelsius() {
 	float fahr, celsius;
-	float lower, upper, step;
-	
-	lower = 0; /* lower limit of temperatuire scale */
-	upper = 300; /* upper limit */
-	step = 20; /* step size */
-	fahr = lower;
+	fahr = LOWER;
 	
 	printf("===Farenheit-Celsius table===\n");
 	printf("Farenheit Celsius\n");
-	while (fahr <= upper) {
+	while (fahr <= UPPER) {
 		celsius = (5.0 / 9.0) * (fahr - 32.0);
 		printf("%9.0f %7.1f\n", fahr, celsius);
-		fahr = fahr + step;
+		fahr += STEP;
 	}
 }
 
@@ -48,7 +42,7 @@ void CelsiusFahrenheitReverse() {
 
 	printf("===Celsius-Farenheit table===\n");
 	printf("Celsius Farenheit\n");
-	for (celsius = 300; celsius >= 0; celsius -= 20) {
+	for (celsius = UPPER; celsius >= LOWER; celsius -= STEP) {
 		fahr = (9.0 / 5.0) * celsius + 32.0;
 		printf("%7.0f %9.1f\n", celsius, fahr);
 	}
@@ -61,7 +55,7 @@ void FahrenheitCelsiusReverse() {
 
 	printf("===Farenheit-Celsius table===\n");
 	printf("Farenheit Celsius\n");
-	for (fahr = 300; fahr >= 0; fahr -= 20)  {
+	for (fahr = UPPER; fahr >= LOWER; fahr -= STEP)  {
 		celsius = (5.0 / 9.0) * (fahr - 32.0);
 		printf("%9.0f %7.1f\n", fahr, celsius);
 	}
