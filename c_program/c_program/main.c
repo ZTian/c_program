@@ -41,8 +41,34 @@ void FahrenheitCelsius() {
 	}
 }
 
+/* print Celsius-Farenheit table for
+celsius = 300, 280, ..., 0; reverse version */
+void CelsiusFahrenheitReverse() {
+	float fahr, celsius;
+
+	printf("===Celsius-Farenheit table===\n");
+	printf("Celsius Farenheit\n");
+	for (celsius = 300; celsius >= 0; celsius -= 20) {
+		fahr = (9.0 / 5.0) * celsius + 32.0;
+		printf("%7.0f %9.1f\n", celsius, fahr);
+	}
+}
+
+/* print Fahrenheit-Celsius table
+for fahr = 300, 280, ..., 0; reverse version */
+void FahrenheitCelsiusReverse() {
+	float fahr, celsius;
+
+	printf("===Farenheit-Celsius table===\n");
+	printf("Farenheit Celsius\n");
+	for (fahr = 300; fahr >= 0; fahr -= 20)  {
+		celsius = (5.0 / 9.0) * (fahr - 32.0);
+		printf("%9.0f %7.1f\n", fahr, celsius);
+	}
+}
+
 main() {
-	CelsiusFahrenheit();
+	CelsiusFahrenheitReverse();
 	printf("\n");
-	FahrenheitCelsius();
+	FahrenheitCelsiusReverse();
 }
