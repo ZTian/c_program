@@ -61,13 +61,24 @@ void FahrenheitCelsiusReverse() {
 	}
 }
 
-/* copy input to output; 1st version */
+/* Copy input to output; 1st version */
 void FileCopy() {
 	int c;
 	while ((c = getchar()) != EOF) {
 		putchar(c);
 	}
 }
+
+/* Count characters in input; 2nd version */
+void CountChar() {
+	double nc;
+	nc = 0;
+
+	while (getchar() != EOF)
+		++nc;
+	printf("%.0f\n", nc);
+}
+
 
 main() {
 	FileCopy();
