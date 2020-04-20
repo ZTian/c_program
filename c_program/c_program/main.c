@@ -61,8 +61,18 @@ void FahrenheitCelsiusReverse() {
 	}
 }
 
+/* copy input to output; 1st version */
+void FileCopy() {
+	int c;
+	c = EOF;
+	printf("%d\n", c);
+	c = getchar();
+	while (c != EOF) {
+		putchar(c);
+		c = getchar();
+	}
+}
+
 main() {
-	CelsiusFahrenheitReverse();
-	printf("\n");
-	FahrenheitCelsiusReverse();
+	FileCopy();
 }
