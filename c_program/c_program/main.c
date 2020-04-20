@@ -79,7 +79,21 @@ void CountChar() {
 	printf("%.0f\n", nc);
 }
 
+/* Count lines, tabs, spaces in input */
+void CountLines() {
+	int c, nl;
+	nl = 0;
+
+	while ((c = getchar()) != EOF) {
+		if (c == '\n' || c == '\t' || c == ' ') {
+			++nl;
+		}
+	}
+
+	printf("%d\n", nl);
+}
+
 
 main() {
-	FileCopy();
+	CountLines();
 }
