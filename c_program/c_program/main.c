@@ -93,7 +93,26 @@ void CountLines() {
 	printf("%d\n", nl);
 }
 
+/* Replace one or more spaces with one space */
+void TrimString() {
+	int c, has_space;
+
+	has_space = 0;
+
+	while ((c = getchar()) != EOF) {
+		if (c == ' ') {
+			if (has_space == 0) {
+				has_space = 1;
+				putchar(c);
+			}
+		} else {
+			has_space = 0;
+			putchar(c);
+		}
+	}
+}
+
 
 main() {
-	CountLines();
+	TrimString();
 }
