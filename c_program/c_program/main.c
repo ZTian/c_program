@@ -3,6 +3,8 @@
 #define LOWER 0 /* lower limit of table */
 #define UPPER 300 /* upper limit */
 #define STEP 20 /* step size */
+#define IN 1 /* inside a word */
+#define OUT 0 /* outside a word */
 
 /* print Celsius-Farenheit table for 
 celsius = 0, 20, ..., 300; floating-point version */
@@ -129,6 +131,27 @@ void CharReplacement() {
 	}
 }
 
+/* count lines, words, and characters in input */
+void wc() {
+	int c, nl, nw, nc, state;
+
+	state = OUT;
+	nl = nw = nc = 0;
+	while ((c = getchar()) != EOF) {
+		++nc;
+		if (c == '\n')
+			++nl;
+		if (c == ' ' || c == '\n' || c == '\t')
+			state = OUT;
+		else if (state == OUT) {
+			state = IN;
+			++nw;
+		}
+	}
+
+	printf("%d %d %d\n", nl, nw, nc);
+}
+
 main() {
-	CharReplacement();
+	wc();
 }
