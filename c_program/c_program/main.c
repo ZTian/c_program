@@ -5,6 +5,8 @@
 #define STEP 20 /* step size */
 #define IN 1 /* inside a word */
 #define OUT 0 /* outside a word */
+#define TRUE 1
+#define FALSE 0
 
 /* print Celsius-Farenheit table for 
 celsius = 0, 20, ..., 300; floating-point version */
@@ -99,16 +101,16 @@ void CountLines() {
 void TrimString() {
 	int c, has_space;
 
-	has_space = 0;
+	has_space = FALSE;
 
 	while ((c = getchar()) != EOF) {
 		if (c == ' ') {
-			if (has_space == 0) {
-				has_space = 1;
+			if (has_space == FALSE) {
+				has_space = TRUE;
 				putchar(c);
 			}
 		} else {
-			has_space = 0;
+			has_space = FALSE;
 			putchar(c);
 		}
 	}
@@ -152,6 +154,27 @@ void wc() {
 	printf("%d %d %d\n", nl, nw, nc);
 }
 
+/* prints one word per line */
+void WordSplit() {
+	int c, has_space, start_of_line;
+
+	has_space = FALSE;
+	start_of_line = TRUE;
+
+	while ((c = getchar()) != EOF) {
+		if (c == ' ' || c == '\t' || c == '\n') {
+			if (start_of_line == FALSE && has_space == FALSE) {
+				printf("\n");
+			}
+			has_space = TRUE;
+		} else {
+			has_space = FALSE;
+			start_of_line = FALSE;
+			putchar(c);
+		}
+	}
+}
+
 main() {
-	wc();
+	WordSplit();
 }
